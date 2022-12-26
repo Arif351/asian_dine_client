@@ -8,7 +8,7 @@
                 "unid": "1",
                 "price": "190",
                 "img": "https://i.ibb.co/0h9LNRP/mutton-primium.jpg",
-                "title": "Chicken Biryani",
+                "title": "Mutton Premium",
                 "details": "Desi chicken biryani is one of the popular dish at customer.",
                 "ingradiants": "Bashmati-rice, deshi chicken, 1 piece egg."
             },
@@ -16,7 +16,7 @@
                 "unid": "2",
                 "price": "175",
                 "img": "https://i.ibb.co/TMK3QKX/mutton.jpg",
-                "title": "",
+                "title": "Mutton Biryani",
                 "details": "Desi chicken biryani is one of the popular dish at customer.",
                 "ingradiants": "Bashmati-rice, deshi chicken, 1 piece egg."
             },
@@ -24,7 +24,7 @@
                 "unid": "3",
                 "price": "150",
                 "img": "https://i.ibb.co/R4PSpFN/CHICKEN-BIRYANI.jpg",
-                "title": "",
+                "title": "Chicken Biryani",
                 "details": "Desi chicken biryani is one of the popular dish at customer.",
                 "ingradiants": "Bashmati-rice, deshi chicken, 1 piece egg."
             },
@@ -32,7 +32,7 @@
                 "unid": "4",
                 "price": "210",
                 "img": "https://i.ibb.co/qMZhSWn/beef-primium.jpg",
-                "title": "",
+                "title": "Beef Premium",
                 "details": "Desi beef biryani is one of the popular dish at customer.",
                 "ingradiants": "Chinigora-rice, deshi beef, 1 piece egg."
             },
@@ -40,7 +40,7 @@
                 "unid": "5",
                 "price": "180",
                 "img": "https://i.ibb.co/X7Pxp9h/chicken-bashmati.jpg",
-                "title": "",
+                "title": "Deshi Chicken",
                 "details": "Desi chicken biryani is one of the popular dish at customer.",
                 "ingradiants": "Bashmati-rice, deshi chicken, 1 piece egg."
             },
@@ -48,7 +48,7 @@
                 "unid": "6",
                 "price": "220",
                 "img": "https://i.ibb.co/GnV8myg/beef-biryani.jpg",
-                "title": "",
+                "title": "Beef Biryani",
                 "details": "Desi beef biryani is one of the popular dish at customer.",
                 "ingradiants": "Bashmati-rice, Beef."
             }
@@ -197,7 +197,7 @@
                 "price": "640",
                 "img": "https://i.ibb.co/DV8MVtK/mutton-pizza.jpg",
                 "title": "Mutton Pizza",
-                "details": "Mutton Pizza"
+                "details": ""
             },
             {
                 "unid": "24",

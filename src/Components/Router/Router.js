@@ -9,6 +9,8 @@ import Lunch from "../FoodMenu/Lunch"
 import Dinner from "../FoodMenu/Dinner"
 import News from "../Shared/News/News";
 import About from "../Shared/About/About";
+import AllFoodLists from "../FoodMenu/AllFoodLists";
+import EachFoodDetails from "../FoodMenu/EachFoodDetails";
 
 export const router = createBrowserRouter([
     {
@@ -20,29 +22,29 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/Biryani',
-                element: <Biryani></Biryani>
+                path: '/foodList/:id',
+                element: <AllFoodLists></AllFoodLists>
             },
-            {
-                path: '/Pizza',
-                element: <Pizza></Pizza>
-            },
-            {
-                path: '/Burger',
-                element: <Burger></Burger>
-            },
-            {
-                path: '/Juice',
-                element: <Juice></Juice>
-            },
-            {
-                path: '/Lunch',
-                element: <Lunch></Lunch>
-            },
-            {
-                path: '/Dinner',
-                element: <Dinner></Dinner>
-            },
+            // {
+            //     path: '/foodList/:id',
+            //     element: <Pizza></Pizza>
+            // },
+            // {
+            //     path: '/foodList/:id',
+            //     element: <Burger></Burger>
+            // },
+            // {
+            //     path: '/foodList/:id',
+            //     element: <Juice></Juice>
+            // },
+            // {
+            //     path: '/foodList/:id',
+            //     element: <Lunch></Lunch>
+            // },
+            // {
+            //     path: '/foodList/:id',
+            //     element: <Dinner></Dinner>
+            // },
             {
                 path: '/news',
                 element: <News></News>

@@ -1,11 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import logo from '../../Resturant/logos/burger logo6.png'
 
+
 const Navbar = () => {
+    // const params = useParams();
+
+    // const { data: foodName = [] } = useQuery({
+    //     queryKey: ['foodList'],
+    //     queryFn: async () => {
+    //         const res = await fetch(`http://localhost:5000/foodList/${params.id}`)
+    //         const data = await res.json();
+    //         console.log(data);
+    //         return data;
+    //     }
+    // })
+
 
 
     const menuItems = <>
+
         <li><Link to="/">Home</Link></li>
         <li><Link to="/menu"></Link>
             <Link>
@@ -13,19 +28,24 @@ const Navbar = () => {
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
             </Link>
             <ul className="p-8 text-white text-2xl font-semibold font-mono z-10 absolute bg-black bg-opacity-75">
-                <li><Link to="/Biryani" className='hover:text-yellow-600'>Biryani</Link></li>
-                <li><Link to="/Pizza" className='hover:text-yellow-600'>Pizza</Link></li>
-                <li><Link to="/Burger" className='hover:text-yellow-600'>Burger</Link></li>
-                <li><Link to="/Juice" className='hover:text-yellow-600'>Juice</Link></li>
-                <li><Link to="/Lunch" className='hover:text-yellow-600'>Lunch</Link></li>
-                <li><Link to="/Dinner" className='hover:text-yellow-600'>Dinner</Link></li>
+                <li><Link className='hover:text-yellow-400'>Biryani</Link></li>
+                <li><Link className='hover:text-yellow-400'>Pizza</Link></li>
+                <li><Link className='hover:text-yellow-400'>Burger</Link></li>
+                <li><Link className='hover:text-yellow-400'>Juice</Link></li>
+                <li><Link className='hover:text-yellow-400'>Lunch</Link></li>
+                <li><Link className='hover:text-yellow-400'>Dinner</Link></li>
             </ul>
-        </li>
+        </li >
         <li><Link to="/news">News</Link></li>
         <li><Link to="/about">About</Link></li>
     </>
 
-
+    // to={`/foodList/${_id}`}
+    // to={`/foodList/${_id}`}
+    // to={`/foodList/${_id}`}
+    // to={`/foodList/${_id}`}
+    // to={`/foodList/${_id}`}
+    // to={`/foodList/${_id}`}
 
     return (
         <div className="navbar">

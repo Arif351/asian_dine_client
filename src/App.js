@@ -6,17 +6,20 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import ProductProvider from './Components/Context/ProductProvider';
 
 const queryClient = new QueryClient()
 
 function App() {
   return (
-    <div className='max-w-[1280px] mx-auto'>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}>
-        </RouterProvider>
-        <Toaster></Toaster>
-      </QueryClientProvider>
+    <div className=' mx-auto'>
+      <ProductProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router}>
+          </RouterProvider>
+          <Toaster></Toaster>
+        </QueryClientProvider>
+      </ProductProvider>
     </div >
   );
 }
