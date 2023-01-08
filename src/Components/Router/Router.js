@@ -12,6 +12,7 @@ import About from "../Shared/About/About";
 import AllFoodLists from "../FoodMenu/AllFoodLists";
 import EachFoodDetails from "../FoodMenu/EachFoodDetails";
 import BookingDate from "../Shared/BookingSection/BookingDate";
+import BookForm from "../Shared/BookingSection/BookForm";
 
 export const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
             {
                 path: "/Booking-Date",
                 element: <BookingDate></BookingDate>
+            },
+            {
+                path: "/Book-Form",
+                element: <BookForm></BookForm>
             }
         ]
     }
