@@ -11,6 +11,7 @@ import News from "../Shared/News/News";
 import About from "../Shared/About/About";
 import AllFoodLists from "../FoodMenu/AllFoodLists";
 import EachFoodDetails from "../FoodMenu/EachFoodDetails";
+import BookingDate from "../Shared/BookingSection/BookingDate";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: "/Booking-Date",
+                element: <BookingDate></BookingDate>
             }
         ]
     }

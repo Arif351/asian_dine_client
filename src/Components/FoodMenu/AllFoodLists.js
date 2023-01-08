@@ -1,9 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { postFetch } from '../APP/Post/PostSlice';
 import EachFoodDetails from './EachFoodDetails';
 
 const AllFoodLists = () => {
+
+    // const { isLoading, posts, error } = useSelector((state) => state.foodPosts)
+    // const { id } = useParams()
+    // const disPatch = useDispatch()
+
+    // useEffect(() => {
+    //     disPatch(postFetch())
+    // }, [])
+
     const params = useParams()
     const { data: foodNamesDetails = [] } = useQuery({
         queryKey: ['foodList'],
@@ -14,10 +25,14 @@ const AllFoodLists = () => {
             return data;
         }
     })
+
     return (
         <section className=''>
+            {/* {isLoading && <h1 className='text-center m-8 font-semibold text-blue-500 text-4xl'>Loading...</h1>}
+            {isLoading && <h1 className='text-center m-8 font-semibold text-blue-500 text-4xl'>{error}</h1>} */}
+
             <div>
-                {
+                {foodNamesDetails &&
                     foodNamesDetails.map(eachFood => <EachFoodDetails
                         key={eachFood._id}
                         eachFood={eachFood}

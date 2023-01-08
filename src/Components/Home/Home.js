@@ -1,5 +1,4 @@
 import React from 'react';
-import { useProduct } from '../Context/ProductProvider';
 import BookingSection from '../Shared/BookingSection/BookingSection';
 import Caruosel from '../Shared/Caruosel/Caruosel';
 import Chef from '../Shared/Chef/Chef';

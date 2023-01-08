@@ -4,7 +4,8 @@ import { Link, useParams } from 'react-router-dom';
 import logo from '../../Resturant/logos/burger logo6.png'
 
 
-const Navbar = () => {
+const Navbar = ({ }) => {
+
     // const params = useParams();
 
     // const { data: foodName = [] } = useQuery({
@@ -28,12 +29,12 @@ const Navbar = () => {
                 <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
             </Link>
             <ul className="p-8 text-white text-2xl font-semibold font-mono z-10 absolute bg-black bg-opacity-75">
-                <li><Link className='hover:text-yellow-400'>Biryani</Link></li>
-                <li><Link className='hover:text-yellow-400'>Pizza</Link></li>
-                <li><Link className='hover:text-yellow-400'>Burger</Link></li>
-                <li><Link className='hover:text-yellow-400'>Juice</Link></li>
-                <li><Link className='hover:text-yellow-400'>Lunch</Link></li>
-                <li><Link className='hover:text-yellow-400'>Dinner</Link></li>
+                <li><Link className='hover:text-yellow-500'>Biryani</Link></li>
+                <li><Link className='hover:text-yellow-500'>Pizza</Link></li>
+                <li><Link className='hover:text-yellow-500'>Burger</Link></li>
+                <li><Link className='hover:text-yellow-500'>Juice</Link></li>
+                <li><Link className='hover:text-yellow-500'>Lunch</Link></li>
+                <li><Link className='hover:text-yellow-500'>Dinner</Link></li>
             </ul>
         </li >
         <li><Link to="/news">News</Link></li>

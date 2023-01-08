@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BookingSection = () => {
     return (
@@ -20,7 +21,7 @@ const BookingSection = () => {
                     <div className="my-auto">
                         <h1 className="mb-5 text-5xl font-semibold text-white font-sans mt-10">Book A Dining</h1>
                         <p className='my-5'></p>
-                        <button className="btn btn-outline btn-warning rounded-full mb-16">Book Now</button>
+                        <Link to="/Booking-Date"><button className="btn btn-outline btn-warning rounded-full mb-16">Book Now</button></Link>
                         <p></p>
 
                     </div>
