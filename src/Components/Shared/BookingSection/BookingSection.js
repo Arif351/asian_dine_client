@@ -23,7 +23,6 @@ const BookingSection = () => {
                         <p className='my-5'></p>
                         <Link to="/Booking-Date"><button className="btn btn-outline btn-warning rounded-full mb-16">Book Now</button></Link>
                         <p></p>
-
                     </div>
                 </div>
             </div>

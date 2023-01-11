@@ -1,13 +1,14 @@
 import React from 'react';
 
-const TimeSlots = ({ timeSlot }) => {
+const TimeSlots = ({ timeSlot, handleTimeSlot }) => {
+
     const { slots } = timeSlot;
-    console.log(slots);
+    console.log();
+
     return (
         <div>
-            <button className="btn btn-outline btn-warning rounded-full">{slots}</button>
+            <button onClick={() => handleTimeSlot(timeSlot)} className="btn btn-outline rounded-full">{slots}</button>
         </div>
-
     );
 };
 

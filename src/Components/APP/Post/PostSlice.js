@@ -3,11 +3,16 @@ import axios from "axios";
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
 export const postFetch = createAsyncThunk("posts/postFetch",
-    async () => {
-        const res = await axios.get("http://localhost:5000/foodList")
-        console.log(res.data);
-        return res.data;
-    })
+    async (id) => {
+        try {
+            const res = await axios.get("http://localhost:5000/foodList/")
+            console.log(res.data);
+            return res.data;
+        }
+        catch {
+
+        }
+    });
 
 const postSlice = createSlice({
     name: "posts",

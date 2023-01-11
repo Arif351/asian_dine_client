@@ -29,7 +29,7 @@ const Caruosel = () => {
     return (
         <>
             <Swiper
-                slidesPerView={2}
+                slidesPerView={3}
                 spaceBetween={10}
                 autoplay={{
                     delay: 2000,

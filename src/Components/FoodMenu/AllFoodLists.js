@@ -7,13 +7,12 @@ import EachFoodDetails from './EachFoodDetails';
 
 const AllFoodLists = () => {
 
-    // const { isLoading, posts, error } = useSelector((state) => state.foodPosts)
-    // const { id } = useParams()
-    // const disPatch = useDispatch()
-
-    // useEffect(() => {
-    //     disPatch(postFetch())
-    // }, [])
+    const { isLoading, posts, error } = useSelector((state) => state.foodPosts)
+    const { id } = useParams()
+    const disPatch = useDispatch()
+    useEffect(() => {
+        disPatch(postFetch())
+    }, [])
 
     const params = useParams()
     const { data: foodNamesDetails = [] } = useQuery({
