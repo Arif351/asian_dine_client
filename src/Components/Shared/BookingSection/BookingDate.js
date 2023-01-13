@@ -76,7 +76,7 @@ const BookingDate = () => {
                 </div>
             </div>
             <div>
-                <BookForm></BookForm>
+                {/* <BookForm></BookForm> */}
             </div>
         </div>
     );

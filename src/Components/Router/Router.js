@@ -13,6 +13,8 @@ import AllFoodLists from "../FoodMenu/AllFoodLists";
 import EachFoodDetails from "../FoodMenu/EachFoodDetails";
 import BookingDate from "../Shared/BookingSection/BookingDate";
 import BookForm from "../Shared/BookingSection/BookForm";
+import Login from "../Authentication/Log/Login";
+import Register from "../Authentication/Register/Register";
 
 export const router = createBrowserRouter([
     {
@@ -54,6 +56,14 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About></About>
+            },
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
             },
             {
                 path: "/Booking-Date",
