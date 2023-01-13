@@ -10,7 +10,6 @@ import BookForm from './BookForm';
 const BookingDate = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [showTime, setShowTime] = useState()
-    console.log(showTime);
 
     const { data: timeSlots = [] } = useQuery({
         queryKey: ['foodList'],

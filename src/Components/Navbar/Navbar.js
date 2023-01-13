@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import logo from '../../Resturant/logos/burger logo6.png'
+// import logo from '../../Resturant/logos/burger logo6.png'
+import { AuthContext } from '../Authentication/AuthContext/AuthProvider';
 
 
-const Navbar = ({ }) => {
+const Navbar = () => {
 
     // const params = useParams();
 
@@ -17,8 +18,14 @@ const Navbar = ({ }) => {
     //         return data;
     //     }
     // })
+    const { user, logout } = useContext(AuthContext)
 
 
+    const handleLogout = () => {
+        logout()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const menuItems = <>
 
@@ -39,9 +46,17 @@ const Navbar = ({ }) => {
         </li >
         <li><Link to="/news">News</Link></li>
         <li><Link to="/about">About</Link></li>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Register</Link></li>
-        <li><Link to="/logout">Logout</Link></li>
+
+        {user?.email ?
+            <>
+                <li> <button>Dashboard</button></li>
+                <li> <button onClick={handleLogout}>Logout</button></li>
+            </>
+            : <>
+                <li><Link to="/login">Login</Link></li>
+                <li><Link to="/register">Register</Link></li>
+            </>
+        }
     </>
 
     // to={`/foodList/${_id}`}
@@ -64,7 +79,7 @@ const Navbar = ({ }) => {
                 </div>
                 <label tabIndex={0} className="avatar mr-3">
                     <div className="w-16">
-                        <img src={logo} alt="" />
+                        <img src="https://i.ibb.co/GpJTQQ8/burger-logo6.png" alt="" />
                     </div>
                 </label>
                 <Link to='/' className="text-2xl font-serif">Asian Dine's</Link>

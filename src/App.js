@@ -9,6 +9,7 @@ import {
 import { Provider } from 'react-redux';
 import store from './Components/APP/Store/Store';
 import 'react-day-picker/dist/style.css';
+import AuthProvider from './Components/Authentication/AuthContext/AuthProvider';
 
 
 const queryClient = new QueryClient()
@@ -16,13 +17,17 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <div className=' mx-auto'>
-      <Provider store={store}>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router}>
-          </RouterProvider>
-          <Toaster></Toaster>
-        </QueryClientProvider>
-      </Provider>
+
+      <AuthProvider>
+        <Provider store={store}>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router}>
+            </RouterProvider>
+            <Toaster></Toaster>
+          </QueryClientProvider>
+        </Provider>
+      </AuthProvider>
+
 
 
     </div >

@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { createUser } = useContext(AuthContext)
+
     const handleLogin = (data) => {
         console.log(data);
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
     }
+
+
+
     return (
         // <div className=''>
         //     <div className="form-control w-full max-w-xs">
@@ -64,7 +76,11 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="text" placeholder="Password" {...register("password", { required: "Password is required", minLength: { value: 6, message: "Password must be 6 characters" } })} className="input input-bordered" />
+                        <input type="password" placeholder="Password" {...register("password", {
+                            required: "Password is required", minLength: { value: 6, message: "Password must be 6 characters" }, pattern: {
+                                value: /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6}$/, message: "Password must have 1 uppercase, 1 lowercase, number and special character"
+                            }
+                        })} className="input input-bordered" />
                         {errors.password && <p className='text-red-600 my-2'>{errors.password?.message}</p>}
                     </div>
                     <input className="btn btn-block btn-warning mt-3" type="Submit" />
