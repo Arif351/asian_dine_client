@@ -15,6 +15,8 @@ import BookingDate from "../Shared/BookingSection/BookingDate";
 import BookForm from "../Shared/BookingSection/BookForm";
 import Login from "../Authentication/Log/Login";
 import Register from "../Authentication/Register/Register";
+import Dashboard from "../Dashboard/Dashboard";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -74,5 +76,9 @@ export const router = createBrowserRouter([
                 element: <BookForm></BookForm>
             }
         ]
+    },
+    {
+        path: "/Dashboard",
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
     }
 ])

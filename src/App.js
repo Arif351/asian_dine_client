@@ -23,7 +23,8 @@ function App() {
           <QueryClientProvider client={queryClient}>
             <RouterProvider router={router}>
             </RouterProvider>
-            <Toaster></Toaster>
+            <Toaster position="top-right"
+              reverseOrder={false}></Toaster>
           </QueryClientProvider>
         </Provider>
       </AuthProvider>

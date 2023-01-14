@@ -9,7 +9,8 @@ import BookForm from './BookForm';
 
 const BookingDate = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
-    const [showTime, setShowTime] = useState()
+    const [showTime, setShowTime] = useState();
+
 
     const { data: timeSlots = [] } = useQuery({
         queryKey: ['foodList'],
@@ -28,6 +29,7 @@ const BookingDate = () => {
         const res = setShowTime(ts);
         console.log(res);
 
+
         //     const time = timeSlot;
         //    const timeTableSlot= time.setShowTime()
 
@@ -45,7 +47,6 @@ const BookingDate = () => {
                                 <hr className='my-6' />
                                 <p className="my-2 text-xl font-medium text-start">Date: <span className='text-orange-400 ml-5'> {format(selectedDate, 'PP')}</span></p>
                                 <p className='text-xl font-medium text-start'>Time: <span className='text-orange-400 ml-5'>{showTime}</span> </p>
-                                {/* <Link to="/Book-Form"><button className="btn btn-outline btn-warning rounded-full">Book Form</button></Link> */}
                             </div>
                         </div>
                     </div>
@@ -62,8 +63,8 @@ const BookingDate = () => {
                 <h1 className='text-center text-3xl font-serif text text-orange-600 mt-4'>Time:</h1>
                 <hr className='w-10/12 mx-auto my-4' />
             </div>            <div>
-                <div className="card w-10/12  mx-auto my-4 ">
-                    <div className="card-body grid grid-cols-2 lg:grid-cols-5 gap-4">
+                <div className="card w-9/12 flex mx-auto my-4 ">
+                    <div className="card-body grid grid-cols-1 lg:grid-cols-5 gap-4 mx-auto">
                         {
                             timeSlots && timeSlots.map(timeSlot => <TimeSlots
                                 key={timeSlot._id}
@@ -75,7 +76,11 @@ const BookingDate = () => {
                 </div>
             </div>
             <div>
-                {/* <BookForm></BookForm> */}
+                <BookForm
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
+                    showTime={showTime}
+                ></BookForm>
             </div>
         </div>
     );

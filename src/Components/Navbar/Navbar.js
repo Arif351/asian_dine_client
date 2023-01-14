@@ -44,12 +44,14 @@ const Navbar = () => {
                 <li><Link className='hover:text-yellow-500'>Dinner</Link></li>
             </ul>
         </li >
+        <li><Link to="/Reviews">Reviews</Link></li>
         <li><Link to="/news">News</Link></li>
         <li><Link to="/about">About</Link></li>
 
         {user?.email ?
             <>
-                <li> <button>Dashboard</button></li>
+                <li> <Link to="/Booking-Date">Book</Link></li>
+                <li> <Link to="/Dashboard">Dashboard</Link></li>
                 <li> <button onClick={handleLogout}>Logout</button></li>
             </>
             : <>

@@ -1,20 +1,36 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [registrationError, setRegistrationError] = useState('')
+    const navigate = useNavigate();
 
     const handleLogin = (data) => {
-        console.log(data);
+        setRegistrationError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success("Registration Success!")
+                const userInfo = {
+                    displayName: data.name,
+                    phone: data.phone
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        navigate('/')
+                    })
+                    .catch(error => console.log(error))
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                setRegistrationError(error.message)
+            })
     }
 
 
@@ -41,7 +57,7 @@ const Register = () => {
         //     </div>
         // </div>
 
-        <div className='h-[1000px] flex justify-center items-center'>
+        <div className='h-[900px] flex justify-center items-center'>
             <div className="w-5/12 border border-orange-600 p-8">
                 <h1 className='text-center text-orange-600 text-3xl font-sans font-bold'>REGISTER</h1>
                 <form onSubmit={handleSubmit(handleLogin)} >
@@ -84,6 +100,9 @@ const Register = () => {
                         {errors.password && <p className='text-red-600 my-2'>{errors.password?.message}</p>}
                     </div>
                     <input className="btn btn-block btn-warning mt-3" type="Submit" />
+                    <div>
+                        {registrationError && <p className='text-red-600'>{registrationError}</p>}
+                    </div>
                 </form>
                 <p className='my-3'><span className=''>Already have an account?</span> <Link to="/login"> <span className='text-blue-500 font-semibold'>Login</span> </Link> </p>
                 <div className="divider">OR</div>
