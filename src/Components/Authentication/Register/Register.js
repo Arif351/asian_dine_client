@@ -19,7 +19,7 @@ const Register = () => {
                 toast.success("Registration Success!")
                 const userInfo = {
                     displayName: data.name,
-                    phone: data.phone
+                    phoneNumber: data.phone
                 }
                 updateUser(userInfo)
                     .then(() => {

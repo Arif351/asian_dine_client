@@ -1,12 +1,15 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Authentication/AuthContext/AuthProvider';
 
 const BookForm = ({ selectedDate, showTime }) => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     console.log(showTime);
     console.log(selectedDate);
-
+    console.log(user);
 
     const handleBooking = (e) => {
         e.preventDefault();
@@ -18,12 +21,32 @@ const BookForm = ({ selectedDate, showTime }) => {
         const time = form.time.value;
 
         console.log(name, email, phone, date, time);
-    }
 
-    const booking = {
+        const booking = {
+            bookingDate: date,
+            email,
+            phone,
+            time,
+            name
+        }
+        console.log(booking);
 
-
-    }
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success("Please, make payment to confirm.")
+                    navigate('')
+                }
+            })
+    };
 
     return (
         <div className='h-[600px] flex justify-center items-center'>
@@ -37,13 +60,13 @@ const BookForm = ({ selectedDate, showTime }) => {
                         <div className="card flex-shrink-0 w-full max-w-lg">
                             <div className="card-body">
                                 <div className="form-control">
-                                    <input type="text" name='name' className="input input-bordered input-primary" defaultValue={user?.name} placeholder="Name" />
+                                    <input type="text" name='name' className="input input-bordered input-primary" defaultValue={user?.displayName} placeholder="Name" />
                                 </div>
                                 <div className="form-control">
                                     <input type="text" name='email' placeholder="email" className="input input-bordered input-primary" defaultValue={user?.email} />
                                 </div>
                                 <div className="form-control">
-                                    <input type="number" name='phone' placeholder="Phone Number" className="input input-bordered input-primary" defaultValue={user?.phone} />
+                                    <input type="number" name='phone' placeholder="Phone Number" className="input input-bordered input-primary" defaultValue={user?.phoneNumber} />
                                 </div>
                                 <div className="form-control">
                                     <input type="text" name='time' placeholder="Time Slot" className="input input-bordered input-primary" defaultValue={showTime} readOnly required />
