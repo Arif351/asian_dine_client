@@ -19,15 +19,17 @@ const BookForm = ({ selectedDate, showTime }) => {
         const phone = form.phone.value;
         const date = form.date.value;
         const time = form.time.value;
+        const person = form.person.value;
 
-        console.log(name, email, phone, date, time);
+        console.log(name, email, phone, date, time, person);
 
         const booking = {
             bookingDate: date,
             email,
             phone,
             time,
-            name
+            name,
+            person
         }
         console.log(booking);
 
@@ -43,7 +45,7 @@ const BookForm = ({ selectedDate, showTime }) => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success("Please, make payment to confirm.")
-                    navigate('')
+                    navigate('/Dashboard')
                 }
             })
     };
@@ -60,13 +62,13 @@ const BookForm = ({ selectedDate, showTime }) => {
                         <div className="card flex-shrink-0 w-full max-w-lg">
                             <div className="card-body">
                                 <div className="form-control">
-                                    <input type="text" name='name' className="input input-bordered input-primary" defaultValue={user?.displayName} placeholder="Name" />
+                                    <input type="text" name='name' className="input input-bordered input-primary" defaultValue={user?.displayName} placeholder="Name" required readOnly />
                                 </div>
                                 <div className="form-control">
-                                    <input type="text" name='email' placeholder="email" className="input input-bordered input-primary" defaultValue={user?.email} />
+                                    <input type="text" name='email' placeholder="email" className="input input-bordered input-primary" defaultValue={user?.email} required readOnly />
                                 </div>
                                 <div className="form-control">
-                                    <input type="number" name='phone' placeholder="Phone Number" className="input input-bordered input-primary" defaultValue={user?.phoneNumber} />
+                                    <input type="number" name='phone' placeholder="Phone Number" className="input input-bordered input-primary" defaultValue={user?.phoneNumber} required />
                                 </div>
                                 <div className="form-control">
                                     <input type="text" name='time' placeholder="Time Slot" className="input input-bordered input-primary" defaultValue={showTime} readOnly required />
@@ -75,7 +77,7 @@ const BookForm = ({ selectedDate, showTime }) => {
                                     <input type="text" name='date' placeholder="Select Date" className="input input-bordered input-primary" value={format(selectedDate, 'PP')} readOnly required />
                                 </div>
                                 <div className="form-control">
-                                    <input type="number" name='person' placeholder="Total Person" className="input input-bordered input-primary" />
+                                    <input type="number" name='person' placeholder="Total Person" className="input input-bordered input-primary" required />
                                 </div>
                                 <div className="form-control mt-3">
                                     <button type='submit' className="btn btn-primary">Submit</button>

@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
@@ -6,7 +7,7 @@ import { AuthContext } from '../AuthContext/AuthProvider';
 
 const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, googleProvider } = useContext(AuthContext);
     const [registrationError, setRegistrationError] = useState('')
     const navigate = useNavigate();
 
@@ -19,11 +20,12 @@ const Register = () => {
                 toast.success("Registration Success!")
                 const userInfo = {
                     displayName: data.name,
-                    phoneNumber: data.phone
+                    phoneNumber: data.phoneNumber,
+                    file: data.file
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        navigate('/')
+                        saveUser(data.name, data.email)
                     })
                     .catch(error => console.log(error))
             })
@@ -31,6 +33,33 @@ const Register = () => {
                 console.log(error)
                 setRegistrationError(error.message)
             })
+    };
+
+    const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/')
+            })
+    }
+
+    const googleProviderReg = new GoogleAuthProvider()
+    const handleGoogle = () => {
+        googleProvider(googleProviderReg)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                navigate('/')
+            })
+            .catch(error => console.log(error))
     }
 
 
@@ -88,6 +117,15 @@ const Register = () => {
                             className="input input-bordered" />
                         {errors.phone && <p className='text-red-600 my-2'>{errors.phone?.message}</p>}
                     </div>
+
+                    <div className="form-control w-full max-w-2xl">
+                        <label className="label">
+                            <span className="label-text">Pick an image</span>
+                        </label>
+                        <input type="file" {...register("file")} className="file-input file-input-warning w-full max-w-2xl" />
+                    </div>
+
+
                     <div className="form-control w-full max-w-2xl">
                         <label className="label">
                             <span className="label-text">Password</span>
@@ -106,7 +144,7 @@ const Register = () => {
                 </form>
                 <p className='my-3'><span className=''>Already have an account?</span> <Link to="/login"> <span className='text-blue-500 font-semibold'>Login</span> </Link> </p>
                 <div className="divider">OR</div>
-                <button className="btn btn-outline btn-accent w-full">Register with Google</button>
+                <button onClick={handleGoogle} className="btn btn-outline btn-accent w-full">Register with Google</button>
             </div>
         </div>
 
