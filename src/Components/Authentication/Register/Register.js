@@ -47,17 +47,37 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                navigate('/')
+                getToken(email)
+
+            })
+    };
+
+    const getToken = email => {
+        fetch(`http://localhost:5000/jwt?email=${email}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.accessToken) {
+                    localStorage.setItem('AccessToken', data.accessToken)
+                    navigate('/')
+                }
             })
     }
 
     const googleProviderReg = new GoogleAuthProvider()
-    const handleGoogle = () => {
+    const handleGoogle = (data) => {
         googleProvider(googleProviderReg)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate('/')
+                const userInfo = {
+                    displayName: data.name,
+                    phoneNumber: data.phoneNumber,
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        saveUser(data.name, data.email)
+                    })
+                    .catch(error => console.log(error))
             })
             .catch(error => console.log(error))
     }

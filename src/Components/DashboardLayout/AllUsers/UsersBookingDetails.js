@@ -23,7 +23,6 @@ const UsersBookingDetails = () => {
             <h1 className='text-2xl font-medium text-orange-700 mb-4'>{user?.displayName}'s Booking Info</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
-
                     <thead>
                         <tr>
                             <th>Serial</th>
@@ -31,7 +30,6 @@ const UsersBookingDetails = () => {
                             <th>Phone</th>
                             <th>Booking Date</th>
                             <th>Time</th>
-                            <th>Email</th>
                             <th>Guest</th>
                             <th>Payment</th>
                         </tr>
@@ -44,7 +42,6 @@ const UsersBookingDetails = () => {
                                 <td>{booking.phone}</td>
                                 <td>{booking.bookingDate}</td>
                                 <td>{booking.time}</td>
-                                <td>{booking.email}</td>
                                 <td>{booking.person}</td>
                                 <td>
                                     <button className="btn btn-info btn-xs">Confirm</button>

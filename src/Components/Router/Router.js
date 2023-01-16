@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
                 element: <UsersBookingDetails></UsersBookingDetails>
             },
             {
-                path: '/AllUsers',
+                path: '/Dashboard/AllUsers',
                 element: <Users></Users>
             }
         ]

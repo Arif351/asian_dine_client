@@ -23,11 +23,8 @@ const Users = () => {
                             <th>Serial</th>
                             <th>Name</th>
                             <th>Phone</th>
-                            <th>Booking Date</th>
-                            <th>Time</th>
                             <th>Email</th>
-                            <th>Guest</th>
-                            <th>Payment</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +32,8 @@ const Users = () => {
                             users.map((user, i) => <tr key={user._id}>
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
-                                <td>{user.phone}</td>
+                                <td>{user.phone || "---"}</td>
+                                <td>{user.email}</td>
                                 <td>
                                     <button className="btn btn-info btn-xs">Confirm</button>
                                 </td>
